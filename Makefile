@@ -3048,7 +3048,7 @@ smdk2410_config	:	unconfig
 	@$(MKCONFIG) $(@:_config=) arm arm920t smdk2410 samsung s3c24x0
 
 lewis2440_config	:	unconfig
-	@$(MKCONFIG) $(@:_config=) arm arm920t lewis2400 hugelewis s3c24x0
+	@$(MKCONFIG) $(@:_config=) arm arm920t lewis2440 hugelewis s3c24x0
 
 SX1_stdout_serial_config \
 SX1_config:		unconfig
