@@ -40,8 +40,8 @@ SECTIONS
 	.text :
 	{
 		cpu/arm920t/start.o	(.text)
-		board/hugeleiws/lewis2440/lowlevel_init.o
-		board/hugelewis/lewis2440/nand_read.o
+		board/hugelewis/lewis2440/lowlevel_init.o (.text)
+		board/hugelewis/lewis2440/nand_read.o (.text)
 		*(.text)
 	}
 
