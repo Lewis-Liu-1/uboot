@@ -1,33 +1,25 @@
---- lua5.4/src/Makefile	2022-07-26 14:38:13.364169901 +1000
+--- lua5.4/src/Makefile	2022-07-26 15:07:31.908951539 +1000
 +++ lua-5.4.4/src/Makefile	2021-07-16 00:01:52.000000000 +1000
-@@ -6,14 +6,11 @@
- # Your platform. See PLATS for possible values.
- PLAT= guess
- 
--#-I/usr/include/
- CC= gcc -std=gnu99
- CFLAGS= -O2 -Wall -Wextra -DLUA_COMPAT_5_3 $(SYSCFLAGS) $(MYCFLAGS)
+@@ -11,7 +11,6 @@ CFLAGS= -O2 -Wall -Wextra -DLUA_COMPAT_5
  LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS)
  LIBS= -lm $(SYSLIBS) $(MYLIBS)
  
--#mips-linux-uclibc-gnu-elfedit
 -CC =mips-linux-uclibc-gnu-gcc -std=gnu99 
  AR= ar rcu
  RANLIB= ranlib
  RM= rm -f
-@@ -23,9 +20,8 @@ SYSCFLAGS=
+@@ -21,8 +20,8 @@ SYSCFLAGS=
  SYSLDFLAGS=
  SYSLIBS=
  
 -MYCFLAGS= -muclibc
--#-EL -muclibc
 -MYLDFLAGS= 
 +MYCFLAGS=
 +MYLDFLAGS=
  MYLIBS=
  MYOBJS=
  
-@@ -34,7 +30,7 @@ CMCFLAGS=
+@@ -31,7 +30,7 @@ CMCFLAGS=
  
  # == END OF USER SETTINGS -- NO NEED TO CHANGE ANYTHING BELOW THIS LINE =======
  
@@ -36,7 +28,7 @@
  
  LUA_A=	liblua.a
  CORE_O=	lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o lundump.o lvm.o lzio.o
-@@ -62,8 +58,7 @@ a:	$(ALL_A)
+@@ -59,8 +58,7 @@ a:	$(ALL_A)
  
  $(LUA_A): $(BASE_O)
  	$(AR) $@ $(BASE_O)
@@ -46,13 +38,11 @@
  
  $(LUA_T): $(LUA_O) $(LUA_A)
  	$(CC) -o $@ $(LDFLAGS) $(LUA_O) $(LUA_A) $(LIBS)
-@@ -122,10 +117,6 @@ FreeBSD NetBSD OpenBSD freebsd:
+@@ -119,8 +117,6 @@ FreeBSD NetBSD OpenBSD freebsd:
  
  generic: $(ALL)
  
 -mips: linux-noreadline
--
--#linux-readline
 -
  Linux linux:	linux-noreadline
  
