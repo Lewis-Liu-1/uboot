@@ -1,0 +1,14 @@
+./autogen.sh
+Will generate .configure file, etc
+
+./configure --host=mips-linux-gnu --disable-FEATURE --disable-lfs --disable-ipv6 --without-PACKAGE --without-openssl --without-kerberos5 --without-pcre --without-zlib --without-bzip2  --with-lua=5.3 --without-pcre2 "CC=mips-linux-gnu-gcc -EL" "CFLAGS=-EL -muclibc -I/usr/local/include/" "LDFLAGS=-EL -muclibc" |tee ../config_lighthttpd1.log
+configure cross compile flags for lighttpd compile
+
+make
+src/lighttpd created
+
+file src/lighttpd
+src/lighttpd: ELF 32-bit LSB executable, MIPS, MIPS32 rel2 version 1 (SYSV), dynamically linked, interpreter /lib/ld-uClibc.so.0, not stripped
+
+It will run on mipsel platform
+ 
