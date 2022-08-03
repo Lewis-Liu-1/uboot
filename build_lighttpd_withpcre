@@ -1,0 +1,27 @@
+wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.21.tar.gz
+tar -xzf pcre2-10.37.tar.gz 
+cd pcre2-10.37/
+./configure --host=mips-linux-gnu CC=mips-linux-uclibc-gnu-gcc "CFLAGS=-EL -muclibc" "LDFLAGS=-EL -muclibc" --prefix=/home/lyl/t5/install 
+make
+make install
+
+cd ..
+get latest lighttpd from https://www.lighttpd.net/download/
+tar zxf lighttpd-1.4.65.tar.gz
+cd lighttpd-1.4.65 
+
+make distclean
+./configure -prefix=/home/lyl/t5/install -host=mips-linux-gnu CC=mips-linux-uclibc-gnu-gcc \
+RANLIB=mips-linux-uclibc-gnu-gcc-ranlib STRIP=mips-linux-uclibc-gnu-gcc-strip --enable-shared \
+--without-mysql --without-zlib --without-bzip2 --disable-ipv6 PCRECONFIG=/home/lyl/t5/install/bin/pcre-config \
+PCRE_LIB=/home/lyl/t5/install/lib/libpcre2-8.a CFLAGS="$CFLAGS -DHAVE_PCRE_H=1 -DHAVE_LIBPCRE=1 -I/home/lyl/t5/install/include -EL -muclibc" \
+"LDFLAGS=-EL -muclibc -L/home/lyl/t5/install/lib"
+
+make
+
+*** remove "\" before run "configure" ...
+
+to watch detailed build/LD process
+
+LD_DEBUG=all make
+
