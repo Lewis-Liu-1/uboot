@@ -18,6 +18,7 @@ PCRE_LIB=/home/lyl/t5/install/lib/libpcre2-8.a CFLAGS="$CFLAGS -DHAVE_PCRE_H=1 -
 "LDFLAGS=-EL -muclibc -L/home/lyl/t5/install/lib"
 
 make
+make install
 
 *** remove "\" before run "configure" ...
 
